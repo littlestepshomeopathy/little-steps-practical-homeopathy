@@ -2,9 +2,113 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Intake Form | Little Steps Practical Homeopathy</title>
+  <title>Client Information Form | Little Steps Practical Homeopathy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="assets/style.css?v=3">
+  <link rel="stylesheet" href="assets/style.css?v=4">
+  <style>
+    /* Print styles */
+    @media print {
+      header, footer, .hero-banner, .hero-small, .info-box, .form-submit, .form-note, .no-print {
+        display: none !important;
+      }
+      body {
+        background: #fff;
+        font-size: 12pt;
+        color: #000;
+        line-height: 1.4;
+      }
+      .section { padding: 0; }
+      .container { padding: 10px 0; max-width: 100%; }
+      .form-section {
+        box-shadow: none;
+        border: 1px solid #ccc;
+        padding: 20px;
+        margin-bottom: 15px;
+        page-break-inside: avoid;
+      }
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        border: none;
+        border-bottom: 1px solid #000;
+        border-radius: 0;
+        padding: 4px 2px;
+        background: transparent;
+      }
+      .form-group textarea {
+        border: 1px solid #000;
+      }
+      .form-row { gap: 15px; }
+      .checkbox-group label { font-size: 10pt; }
+      h1.print-title {
+        display: block !important;
+        text-align: center;
+        font-size: 18pt;
+        margin-bottom: 5px;
+        color: #000;
+      }
+      .print-subtitle {
+        display: block !important;
+        text-align: center;
+        font-size: 10pt;
+        color: #666;
+        margin-bottom: 20px;
+      }
+    }
+    @media not print {
+      .print-title, .print-subtitle { display: none; }
+    }
+
+    /* Children grid */
+    .children-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px;
+    }
+    @media (max-width: 768px) {
+      .children-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* Medications grid */
+    .medications-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    @media (max-width: 768px) {
+      .medications-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Phone preference radios */
+    .phone-pref {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.85em;
+      color: #666;
+    }
+    .phone-pref input[type="radio"] {
+      accent-color: #3a6b57;
+    }
+
+    /* Inline radio group */
+    .radio-inline {
+      display: flex;
+      gap: 20px;
+      margin-top: 6px;
+    }
+    .radio-inline label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 400;
+      color: #4a4a4a;
+      cursor: pointer;
+    }
+    .radio-inline input[type="radio"] {
+      accent-color: #3a6b57;
+    }
+  </style>
 </head>
 <body>
 
@@ -24,12 +128,16 @@
 <!-- Hero -->
 <div class="hero-banner hero-small" style="background-image: url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1400&h=400&fit=crop');">
   <div class="hero-content">
-    <h1>Client Intake Form</h1>
+    <h1>Client Information Form</h1>
   </div>
 </div>
 
 <div class="section">
   <div class="container">
+
+    <!-- Print-only header -->
+    <h1 class="print-title">CLIENT INFORMATION</h1>
+    <p class="print-subtitle">Little Steps Practical Homeopathy</p>
 
     <div class="info-box" style="margin-bottom: 35px;">
       <p>
@@ -38,166 +146,231 @@
       </p>
     </div>
 
-    <!-- Replace YOUR_EMAIL with your Formspree form ID after signing up at formspree.io -->
     <form action="https://formspree.io/f/mbdaopbo" method="POST">
 
       <!-- Section 1: Personal Information -->
       <div class="form-section">
         <h2>Personal Information</h2>
-        <p class="section-desc">Basic contact details so we can stay in touch.</p>
 
         <div class="form-row">
           <div class="form-group">
             <label>First Name <span class="required">*</span></label>
-            <input type="text" name="first_name" required>
+            <input type="text" name="First Name" required>
           </div>
+          <div class="form-group">
+            <label>Date</label>
+            <input type="date" name="Date">
+          </div>
+        </div>
+
+        <div class="form-row">
           <div class="form-group">
             <label>Last Name <span class="required">*</span></label>
-            <input type="text" name="last_name" required>
+            <input type="text" name="Last Name" required>
+          </div>
+          <div class="form-group">
+            <div class="form-row" style="margin-bottom: 0;">
+              <div class="form-group" style="margin-bottom: 0;">
+                <label>Age</label>
+                <input type="number" name="Age" min="0" max="120">
+              </div>
+              <div class="form-group" style="margin-bottom: 0;">
+                <label>Date of Birth</label>
+                <input type="date" name="Date of Birth">
+              </div>
+            </div>
           </div>
         </div>
 
+        <div class="form-group">
+          <label>Address</label>
+          <input type="text" name="Address">
+        </div>
+
         <div class="form-row">
+          <div class="form-group">
+            <label>City</label>
+            <input type="text" name="City">
+          </div>
+          <div class="form-group">
+            <div class="form-row" style="margin-bottom: 0;">
+              <div class="form-group" style="margin-bottom: 0;">
+                <label>State</label>
+                <input type="text" name="State">
+              </div>
+              <div class="form-group" style="margin-bottom: 0;">
+                <label>Zip</label>
+                <input type="text" name="Zip">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 2: Contact Information -->
+      <div class="form-section">
+        <h2>Contact Information</h2>
+        <p class="section-desc">Check which phone number we should use for leaving messages.</p>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Home Phone</label>
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <input type="tel" name="Home Phone" style="flex: 1;">
+              <span class="phone-pref"><input type="radio" name="Preferred Phone" value="Home"> Use for messages</span>
+            </div>
+          </div>
           <div class="form-group">
             <label>Email Address <span class="required">*</span></label>
-            <input type="email" name="email" required>
-          </div>
-          <div class="form-group">
-            <label>Phone Number</label>
-            <input type="tel" name="phone">
+            <input type="email" name="Email" required>
           </div>
         </div>
 
         <div class="form-row">
           <div class="form-group">
-            <label>Date of Birth</label>
-            <input type="date" name="date_of_birth">
+            <label>Cell Phone</label>
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <input type="tel" name="Cell Phone" style="flex: 1;">
+              <span class="phone-pref"><input type="radio" name="Preferred Phone" value="Cell"> Use for messages</span>
+            </div>
           </div>
           <div class="form-group">
-            <label>City / State</label>
-            <input type="text" name="location" placeholder="e.g. Austin, TX">
+            <label>Work Phone</label>
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <input type="tel" name="Work Phone" style="flex: 1;">
+              <span class="phone-pref"><input type="radio" name="Preferred Phone" value="Work"> Use for messages</span>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Section 2: About Your Family -->
+      <!-- Section 3: Background -->
       <div class="form-section">
-        <h2>About Your Family</h2>
-        <p class="section-desc">Help us understand who you're seeking guidance for.</p>
+        <h2>Background</h2>
 
         <div class="form-row">
           <div class="form-group">
-            <label>Who is this consultation for? <span class="required">*</span></label>
-            <select name="consultation_for" required>
-              <option value="">Select one...</option>
-              <option value="myself">Myself</option>
-              <option value="my_child">My child</option>
-              <option value="my_family">My family</option>
-              <option value="other">Other</option>
-            </select>
+            <label>Occupation (current or prior to retirement)</label>
+            <input type="text" name="Occupation">
           </div>
           <div class="form-group">
-            <label>Ages of family members (if applicable)</label>
-            <input type="text" name="family_ages" placeholder="e.g. Adult 34, Children 6, 3">
+            <label>&nbsp;</label>
+            <div class="checkbox-group">
+              <label>
+                <input type="checkbox" name="Retired" value="Yes">
+                Check if retired
+              </label>
+            </div>
           </div>
         </div>
-      </div>
-
-      <!-- Section 3: Health Background -->
-      <div class="form-section">
-        <h2>Health Background</h2>
-        <p class="section-desc">This helps guide our educational conversation. This is not a medical evaluation.</p>
 
         <div class="form-group">
-          <label>What are your primary concerns or areas you'd like to learn about? <span class="required">*</span></label>
-          <textarea name="primary_concerns" rows="4" required placeholder="Describe the main topics or concerns you'd like to explore..."></textarea>
+          <label>Are you interested in Homeopathy classes?</label>
+          <div class="radio-inline">
+            <label><input type="radio" name="Interested in Classes" value="Yes"> Yes</label>
+            <label><input type="radio" name="Interested in Classes" value="No"> No</label>
+          </div>
         </div>
-
-        <div class="form-group">
-          <label>How long have these concerns been present?</label>
-          <select name="concern_duration">
-            <option value="">Select one...</option>
-            <option value="less_than_1_month">Less than 1 month</option>
-            <option value="1_to_6_months">1 to 6 months</option>
-            <option value="6_to_12_months">6 to 12 months</option>
-            <option value="more_than_1_year">More than 1 year</option>
-            <option value="ongoing">Ongoing / Lifelong</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label>Are you or your family members currently taking any medications or supplements?</label>
-          <textarea name="medications" rows="3" placeholder="List any medications, supplements, or remedies currently being used..."></textarea>
-        </div>
-
-        <div class="form-group">
-          <label>Known allergies or sensitivities</label>
-          <input type="text" name="allergies" placeholder="e.g. Penicillin, dairy, pollen">
-        </div>
-
-        <div class="form-group">
-          <label>Any relevant family health history?</label>
-          <textarea name="family_history" rows="3" placeholder="Any patterns of health concerns that run in the family..."></textarea>
-        </div>
-      </div>
-
-      <!-- Section 4: Lifestyle -->
-      <div class="form-section">
-        <h2>Lifestyle</h2>
-        <p class="section-desc">Understanding daily habits helps us tailor our educational guidance.</p>
 
         <div class="form-row">
           <div class="form-group">
-            <label>How would you describe your sleep?</label>
-            <select name="sleep">
-              <option value="">Select one...</option>
-              <option value="good">Good &mdash; restful and consistent</option>
-              <option value="fair">Fair &mdash; occasional difficulty</option>
-              <option value="poor">Poor &mdash; frequent disruptions</option>
-            </select>
+            <label>Spouse/Partner's Name</label>
+            <input type="text" name="Spouse Partner Name">
           </div>
           <div class="form-group">
-            <label>How would you describe your stress level?</label>
-            <select name="stress">
-              <option value="">Select one...</option>
-              <option value="low">Low</option>
-              <option value="moderate">Moderate</option>
-              <option value="high">High</option>
-              <option value="very_high">Very high</option>
-            </select>
+            <label>Parents' Names (if client is a child)</label>
+            <input type="text" name="Parents Names">
           </div>
-        </div>
-
-        <div class="form-group">
-          <label>Brief overview of your typical diet</label>
-          <textarea name="diet" rows="2" placeholder="e.g. Mostly whole foods, limited processed, vegetarian..."></textarea>
         </div>
       </div>
 
-      <!-- Section 5: Homeopathy Experience -->
+      <!-- Section 4: Children / Siblings -->
       <div class="form-section">
-        <h2>Homeopathy Experience</h2>
-        <p class="section-desc">No experience is needed &mdash; we welcome complete beginners.</p>
+        <h2>Children's Names &amp; Ages</h2>
+        <p class="section-desc">Even if adults. Sibling names if client is a child.</p>
 
-        <div class="form-group">
-          <label>Have you used homeopathy before?</label>
-          <select name="homeopathy_experience">
-            <option value="">Select one...</option>
-            <option value="no">No, this is completely new to me</option>
-            <option value="a_little">A little &mdash; I've tried a few remedies</option>
-            <option value="some">Some experience &mdash; I use remedies occasionally</option>
-            <option value="experienced">Experienced &mdash; I use remedies regularly</option>
-          </select>
+        <div class="children-grid">
+          <div class="form-group">
+            <label>1.</label>
+            <input type="text" name="Child 1">
+          </div>
+          <div class="form-group">
+            <label>2.</label>
+            <input type="text" name="Child 2">
+          </div>
+          <div class="form-group">
+            <label>3.</label>
+            <input type="text" name="Child 3">
+          </div>
+          <div class="form-group">
+            <label>4.</label>
+            <input type="text" name="Child 4">
+          </div>
+          <div class="form-group">
+            <label>5.</label>
+            <input type="text" name="Child 5">
+          </div>
+          <div class="form-group">
+            <label>6.</label>
+            <input type="text" name="Child 6">
+          </div>
+          <div class="form-group">
+            <label>7.</label>
+            <input type="text" name="Child 7">
+          </div>
+          <div class="form-group">
+            <label>8.</label>
+            <input type="text" name="Child 8">
+          </div>
+          <div class="form-group">
+            <label>9.</label>
+            <input type="text" name="Child 9">
+          </div>
+          <div class="form-group">
+            <label>10.</label>
+            <input type="text" name="Child 10">
+          </div>
+          <div class="form-group">
+            <label>11.</label>
+            <input type="text" name="Child 11">
+          </div>
+          <div class="form-group">
+            <label>12.</label>
+            <input type="text" name="Child 12">
+          </div>
         </div>
+      </div>
 
-        <div class="form-group">
-          <label>If yes, which remedies have you used? (optional)</label>
-          <textarea name="remedies_used" rows="2" placeholder="e.g. Arnica, Chamomilla, Belladonna..."></textarea>
-        </div>
+      <!-- Section 5: Medications -->
+      <div class="form-section">
+        <h2>Medications</h2>
+        <p class="section-desc">Medications presently taking and what they are for.</p>
 
-        <div class="form-group">
-          <label>What do you hope to learn or gain from our sessions?</label>
-          <textarea name="goals" rows="3" placeholder="e.g. I want to feel confident using remedies at home for my kids..."></textarea>
+        <div class="medications-grid">
+          <div class="form-group">
+            <label>1.</label>
+            <input type="text" name="Medication 1">
+          </div>
+          <div class="form-group">
+            <label>2.</label>
+            <input type="text" name="Medication 2">
+          </div>
+          <div class="form-group">
+            <label>3.</label>
+            <input type="text" name="Medication 3">
+          </div>
+          <div class="form-group">
+            <label>4.</label>
+            <input type="text" name="Medication 4">
+          </div>
+          <div class="form-group">
+            <label>5.</label>
+            <input type="text" name="Medication 5">
+          </div>
+          <div class="form-group">
+            <label>6.</label>
+            <input type="text" name="Medication 6">
+          </div>
         </div>
       </div>
 
@@ -208,43 +381,50 @@
 
         <div class="checkbox-group">
           <label>
-            <input type="checkbox" name="ack_educational" required>
+            <input type="checkbox" name="Ack Educational" required>
             I understand that all services provided by Little Steps Practical Homeopathy are <strong>educational in nature only</strong>.
           </label>
         </div>
 
         <div class="checkbox-group">
           <label>
-            <input type="checkbox" name="ack_no_medical" required>
+            <input type="checkbox" name="Ack No Medical" required>
             I understand that <strong>no medical advice, diagnosis, or treatment</strong> is being provided.
           </label>
         </div>
 
         <div class="checkbox-group">
           <label>
-            <input type="checkbox" name="ack_complement" required>
+            <input type="checkbox" name="Ack Complement" required>
             I understand that homeopathy is intended to <strong>complement, not replace</strong>, licensed medical care.
           </label>
         </div>
 
         <div class="checkbox-group">
           <label>
-            <input type="checkbox" name="ack_responsibility" required>
+            <input type="checkbox" name="Ack Responsibility" required>
             I accept <strong>full responsibility</strong> for my own health decisions and those of my family.
           </label>
         </div>
 
         <div class="checkbox-group">
           <label>
-            <input type="checkbox" name="ack_confidential" required>
+            <input type="checkbox" name="Ack Confidential" required>
             I understand that my information will be kept <strong>confidential</strong> and used only for educational purposes.
           </label>
         </div>
+
+        <div class="form-group" style="margin-top: 25px;">
+          <label>Client Signature (type full name) <span class="required">*</span></label>
+          <input type="text" name="Client Signature" required placeholder="Type your full legal name">
+        </div>
+
+        <p style="font-size: 0.85em; color: #888;">(Parent/Guardian if client is under 21)</p>
       </div>
 
       <!-- Submit -->
       <div class="text-center">
-        <button type="submit" class="form-submit">Submit Intake Form</button>
+        <button type="submit" class="form-submit">Submit Client Information</button>
         <p class="form-note">
           You'll receive a confirmation email after submitting.
           We'll be in touch within 24&ndash;48 hours to schedule your session.
