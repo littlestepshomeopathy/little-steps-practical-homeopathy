@@ -174,11 +174,17 @@
             <div class="form-row" style="margin-bottom: 0;">
               <div class="form-group" style="margin-bottom: 0;">
                 <label>Age</label>
-                <input type="number" name="Age" min="0" max="120">
+                <input type="number" name="Age" id="age-field" min="0" max="120" readonly style="background:#f0f7f3;cursor:default;">
               </div>
               <div class="form-group" style="margin-bottom: 0;">
                 <label>Date of Birth</label>
-                <input type="date" name="Date of Birth">
+                <input type="date" name="Date of Birth" id="dob-field" onchange="
+                  var dob = new Date(this.value);
+                  var today = new Date();
+                  var age = today.getFullYear() - dob.getFullYear();
+                  if (today.getMonth() < dob.getMonth() || (today.getMonth() === dob.getMonth() && today.getDate() < dob.getDate())) age--;
+                  document.getElementById('age-field').value = age >= 0 ? age : '';
+                ">
               </div>
             </div>
           </div>
