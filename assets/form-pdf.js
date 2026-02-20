@@ -17,8 +17,17 @@
 
     // Determine filename from the form type or page title
     var formType = form.querySelector('input[name="_form_type"]');
-    var nameField = form.querySelector('input[name="First Name"], input[name="Full Name"], input[name="Name"]');
-    var clientName = nameField ? nameField.value.trim().replace(/\s+/g, '-') : 'form';
+    var firstNameField = form.querySelector('input[name="First Name"]');
+    var lastNameField = form.querySelector('input[name="Last Name"]');
+    var nameField = form.querySelector('input[name="Full Name"], input[name="Name"]');
+    var clientName;
+    if (firstNameField && lastNameField && firstNameField.value && lastNameField.value) {
+      clientName = (firstNameField.value.trim() + '-' + lastNameField.value.trim()).replace(/\s+/g, '-');
+    } else if (nameField) {
+      clientName = nameField.value.trim().replace(/\s+/g, '-');
+    } else {
+      clientName = 'form';
+    }
     var docTitle = formType ? formType.value : document.title.split('|')[0].trim();
     var filename = clientName + '-' + docTitle.replace(/[^a-zA-Z0-9]+/g, '-').toLowerCase() + '.pdf';
 

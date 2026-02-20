@@ -4,74 +4,8 @@
   <meta charset="utf-8">
   <title>Health History Questionnaire | Little Steps to Healing Homeopathy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="assets/style.css?v=4">
-  <style>
-    @media print {
-      header, footer, .hero-banner, .hero-small, .info-box, .form-submit, .form-note, .no-print {
-        display: none !important;
-      }
-      body { background: #fff; font-size: 12pt; color: #000; line-height: 1.4; }
-      .section { padding: 0; }
-      .container { padding: 10px 0; max-width: 100%; }
-      .form-section {
-        box-shadow: none; border: 1px solid #ccc; padding: 20px; margin-bottom: 15px; page-break-inside: avoid;
-      }
-      .form-group input, .form-group select, .form-group textarea {
-        border: none; border-bottom: 1px solid #000; border-radius: 0; padding: 4px 2px; background: transparent;
-      }
-      .form-group textarea { border: 1px solid #000; }
-      .form-row { gap: 15px; }
-      h1.print-title { display: block !important; text-align: center; font-size: 18pt; margin-bottom: 5px; color: #000; }
-      .print-subtitle { display: block !important; text-align: center; font-size: 10pt; color: #666; margin-bottom: 20px; }
-      .timeline-row { page-break-inside: avoid; }
-    }
-    @media not print {
-      .print-title, .print-subtitle { display: none; }
-    }
-
-    /* Timeline table */
-    .timeline-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 15px;
-    }
-    .timeline-table th {
-      text-align: left;
-      padding: 10px 12px;
-      background: #f0f7f3;
-      border: 1px solid #d5ddd8;
-      font-family: 'Playfair Display', Georgia, serif;
-      color: #2d5a46;
-      font-size: 0.9em;
-    }
-    .timeline-table td {
-      padding: 6px 8px;
-      border: 1px solid #d5ddd8;
-      vertical-align: top;
-    }
-    .timeline-table td input {
-      width: 100%;
-      padding: 8px 10px;
-      border: 1px solid #d5ddd8;
-      border-radius: 6px;
-      font-family: inherit;
-      font-size: 0.95em;
-      color: #333;
-      background: #fafcfb;
-      transition: border-color 0.2s ease, box-shadow 0.2s ease;
-    }
-    .timeline-table td input:focus {
-      outline: none;
-      border-color: #5a9e7f;
-      box-shadow: 0 0 0 3px rgba(90, 158, 127, 0.15);
-    }
-    .timeline-table .col-date { width: 180px; }
-    .timeline-note {
-      font-size: 0.8em;
-      color: #c0392b;
-      font-style: italic;
-    }
-  </style>
+  <link rel="stylesheet" href="assets/style.css?v=5">
+  <meta http-equiv="refresh" content="3;url=intake-form.html">
 </head>
 <body>
 
@@ -97,126 +31,15 @@
 </div>
 
 <div class="section">
-  <div class="container">
-
-    <h1 class="print-title">Chief Complaints and Health History Questionnaire</h1>
-    <p class="print-subtitle">Little Steps to Healing Homeopathy</p>
-
-    <div class="info-box" style="margin-bottom: 35px;">
-      <p>
-        Please complete this questionnaire before your session. This information
-        helps guide our educational conversation. It is not a medical evaluation.
-      </p>
-    </div>
-
-    <form action="https://formspree.io/f/mbdaopbo" method="POST">
-
-      <input type="hidden" name="_form_type" value="Health History Questionnaire">
-
-      <!-- Name & Date -->
-      <div class="form-section">
-        <div class="form-row">
-          <div class="form-group">
-            <label>Name <span class="required">*</span></label>
-            <input type="text" name="Name" required>
-          </div>
-          <div class="form-group">
-            <label>Date</label>
-            <input type="date" name="Date" id="form-date" readonly style="background:#f0f7f3;cursor:default;">
-          </div>
-        </div>
-      </div>
-      <script>document.getElementById('form-date').valueAsDate = new Date();</script>
-
-      <!-- Question 1 -->
-      <div class="form-section">
-        <h2>1. Chief Complaints</h2>
-        <p class="section-desc">What is your chief complaint? Please briefly list the ailment(s).</p>
-        <div class="form-group">
-          <textarea name="Chief Complaints" rows="6" required placeholder="Please list your complaints, one per line..."></textarea>
-        </div>
-      </div>
-
-      <!-- Question 2 -->
-      <div class="form-section">
-        <h2>2. Onset</h2>
-        <p class="section-desc">When did you first have this/these complaint(s), even in a very mild form?</p>
-        <div class="form-group">
-          <textarea name="Complaint Onset" rows="4" placeholder="Describe when each complaint first appeared..."></textarea>
-        </div>
-      </div>
-
-      <!-- Question 3 -->
-      <div class="form-section">
-        <h2>3. Diagnosis</h2>
-        <p class="section-desc">What, if any, diagnosis was made? What diagnostic tests were performed?</p>
-        <div class="form-group">
-          <textarea name="Diagnosis" rows="4" placeholder="List any diagnoses and tests..."></textarea>
-        </div>
-      </div>
-
-      <!-- Question 4 -->
-      <div class="form-section">
-        <h2>4. Health Professionals Consulted</h2>
-        <p class="section-desc">Did you consult a health professional? If so, what is their specialty?</p>
-        <div class="form-group">
-          <textarea name="Health Professionals" rows="4" placeholder="List any health professionals you've consulted and their specialties..."></textarea>
-        </div>
-      </div>
-
-      <!-- Question 5 -->
-      <div class="form-section">
-        <h2>5. Family Health History</h2>
-        <p class="section-desc">Please list any known history of disease in your family such as cancer, heart disease, diabetes, alcoholism, etc. What is your relationship? If deceased, what was your parents', grandparents', siblings' cause of death?</p>
-        <div class="form-group">
-          <textarea name="Family Health History" rows="6" placeholder="e.g. Mother - diabetes, heart disease. Father (deceased) - cancer. Maternal grandmother - arthritis..."></textarea>
-        </div>
-      </div>
-
-      <!-- Question 6 -->
-      <div class="form-section">
-        <h2>6. Treatments &amp; Medical Events Timeline</h2>
-        <p class="section-desc">Please list any treatments and/or noteworthy medical events. Specific dates are not important; approximate as best you can. List from present to past in chronological order.</p>
-        <p class="timeline-note">*Please include dental history such as any extractions, root canals, or wisdom teeth removal.</p>
-
-        <table class="timeline-table">
-          <thead>
-            <tr>
-              <th class="col-date">Date (approx.)</th>
-              <th>Medications / Treatments / Noteworthy Medical Events</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td><input type="text" name="Timeline Date 1" placeholder="e.g. 2025"></td><td><input type="text" name="Timeline Event 1"></td></tr>
-            <tr><td><input type="text" name="Timeline Date 2"></td><td><input type="text" name="Timeline Event 2"></td></tr>
-            <tr><td><input type="text" name="Timeline Date 3"></td><td><input type="text" name="Timeline Event 3"></td></tr>
-            <tr><td><input type="text" name="Timeline Date 4"></td><td><input type="text" name="Timeline Event 4"></td></tr>
-            <tr><td><input type="text" name="Timeline Date 5"></td><td><input type="text" name="Timeline Event 5"></td></tr>
-            <tr><td><input type="text" name="Timeline Date 6"></td><td><input type="text" name="Timeline Event 6"></td></tr>
-            <tr><td><input type="text" name="Timeline Date 7"></td><td><input type="text" name="Timeline Event 7"></td></tr>
-            <tr><td><input type="text" name="Timeline Date 8"></td><td><input type="text" name="Timeline Event 8"></td></tr>
-            <tr><td><input type="text" name="Timeline Date 9"></td><td><input type="text" name="Timeline Event 9"></td></tr>
-            <tr><td><input type="text" name="Timeline Date 10"></td><td><input type="text" name="Timeline Event 10"></td></tr>
-            <tr><td><input type="text" name="Timeline Date 11"></td><td><input type="text" name="Timeline Event 11"></td></tr>
-            <tr><td><input type="text" name="Timeline Date 12"></td><td><input type="text" name="Timeline Event 12"></td></tr>
-            <tr><td><input type="text" name="Timeline Date 13"></td><td><input type="text" name="Timeline Event 13"></td></tr>
-            <tr><td><input type="text" name="Timeline Date 14"></td><td><input type="text" name="Timeline Event 14"></td></tr>
-            <tr><td><input type="text" name="Timeline Date 15"></td><td><input type="text" name="Timeline Event 15"></td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <!-- Submit -->
-      <div class="text-center">
-        <button type="submit" class="form-submit">Submit Health History</button>
-        <p class="form-note">
-          You'll receive a confirmation email after submitting.
-          This information will be reviewed before your session.
-        </p>
-      </div>
-
-    </form>
-
+  <div class="container" style="text-align: center; padding: 80px 30px;">
+    <h2>This form has moved!</h2>
+    <p style="font-size: 1.1em; margin: 20px 0;">
+      The Health History Questionnaire is now part of our unified
+      <strong>Complete Intake Package</strong>. You'll be redirected automatically in a few seconds.
+    </p>
+    <p>
+      <a href="intake-form.html" class="btn-primary">Go to Intake Forms</a>
+    </p>
   </div>
 </div>
 
@@ -261,7 +84,5 @@
   </div>
 </footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-<script src="assets/form-pdf.js"></script>
 </body>
 </html>

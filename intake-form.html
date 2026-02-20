@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Client Information Form | Little Steps to Healing Homeopathy</title>
+  <title>Client Intake Forms | Little Steps to Healing Homeopathy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="assets/style.css?v=4">
+  <link rel="stylesheet" href="assets/style.css?v=5">
   <style>
     /* Print styles */
     @media print {
@@ -54,9 +54,37 @@
         color: #666;
         margin-bottom: 20px;
       }
+      .form-part-header {
+        page-break-before: always;
+      }
+      .timeline-row { page-break-inside: avoid; }
     }
     @media not print {
       .print-title, .print-subtitle { display: none; }
+    }
+
+    /* Part divider headers */
+    .form-part-header {
+      text-align: center;
+      padding: 30px 20px;
+      margin: 40px 0 30px;
+      background: linear-gradient(135deg, #f0f7f3 0%, #f5f0e8 100%);
+      border-radius: 16px;
+      border: 1px solid #d5ddd8;
+    }
+    .form-part-header h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      color: #2d5a46;
+      font-size: 1.6em;
+      margin: 0 0 6px;
+    }
+    .form-part-header p {
+      color: #888;
+      font-size: 0.9em;
+      margin: 0;
+    }
+    .form-part-header:first-of-type {
+      margin-top: 0;
     }
 
     /* Children grid */
@@ -108,6 +136,78 @@
     .radio-inline input[type="radio"] {
       accent-color: #3a6b57;
     }
+
+    /* Timeline table */
+    .timeline-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+    .timeline-table th {
+      text-align: left;
+      padding: 10px 12px;
+      background: #f0f7f3;
+      border: 1px solid #d5ddd8;
+      font-family: 'Playfair Display', Georgia, serif;
+      color: #2d5a46;
+      font-size: 0.9em;
+    }
+    .timeline-table td {
+      padding: 6px 8px;
+      border: 1px solid #d5ddd8;
+      vertical-align: top;
+    }
+    .timeline-table td input {
+      width: 100%;
+      padding: 8px 10px;
+      border: 1px solid #d5ddd8;
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 0.95em;
+      color: #333;
+      background: #fafcfb;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .timeline-table td input:focus {
+      outline: none;
+      border-color: #5a9e7f;
+      box-shadow: 0 0 0 3px rgba(90, 158, 127, 0.15);
+    }
+    .timeline-table .col-date { width: 180px; }
+    .timeline-note {
+      font-size: 0.8em;
+      color: #c0392b;
+      font-style: italic;
+    }
+
+    /* Waiver text styling */
+    .waiver-text {
+      background: #fafcfb;
+      border: 1px solid #d5ddd8;
+      border-radius: 12px;
+      padding: 30px 35px;
+      margin-bottom: 30px;
+      line-height: 1.8;
+      color: #4a4a4a;
+      font-size: 0.95em;
+    }
+    .waiver-text p {
+      margin-bottom: 16px;
+    }
+    .waiver-text p:last-child {
+      margin-bottom: 0;
+    }
+    .waiver-text .waiver-to {
+      font-weight: 600;
+      color: #2d5a46;
+    }
+    .waiver-text .section-heading {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-weight: 600;
+      color: #2d5a46;
+      font-size: 1.05em;
+      margin-top: 24px;
+    }
   </style>
 </head>
 <body>
@@ -129,7 +229,7 @@
 <!-- Hero -->
 <div class="hero-banner hero-small" style="background-image: url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1400&h=400&fit=crop');">
   <div class="hero-content">
-    <h1>Client Information Form</h1>
+    <h1>Client Intake Forms</h1>
   </div>
 </div>
 
@@ -137,17 +237,28 @@
   <div class="container">
 
     <!-- Print-only header -->
-    <h1 class="print-title">CLIENT INFORMATION</h1>
+    <h1 class="print-title">CLIENT INTAKE FORMS</h1>
     <p class="print-subtitle">Little Steps to Healing Homeopathy</p>
 
     <div class="info-box" style="margin-bottom: 35px;">
       <p>
-        Please complete this form before your first session. All information is
-        kept confidential and used for educational purposes only.
+        Please complete all three parts of this form before your first session.
+        All information is kept confidential and used for educational purposes only.
+        A PDF copy will be downloaded to your device upon submission.
       </p>
     </div>
 
     <form action="https://formspree.io/f/mbdaopbo" method="POST">
+
+      <input type="hidden" name="_form_type" value="Complete Intake Package">
+
+      <!-- ═══════════════════════════════════════════════════ -->
+      <!-- PART 1: CLIENT INFORMATION                         -->
+      <!-- ═══════════════════════════════════════════════════ -->
+      <div class="form-part-header">
+        <h2>Part 1: Client Information</h2>
+        <p>Personal details, contact information, and acknowledgments</p>
+      </div>
 
       <!-- Section 1: Personal Information -->
       <div class="form-section">
@@ -430,12 +541,276 @@
         <p style="font-size: 0.85em; color: #888;">(Parent/Guardian if client is under 21)</p>
       </div>
 
+      <!-- ═══════════════════════════════════════════════════ -->
+      <!-- PART 2: HEALTH HISTORY QUESTIONNAIRE               -->
+      <!-- ═══════════════════════════════════════════════════ -->
+      <div class="form-part-header">
+        <h2>Part 2: Health History Questionnaire</h2>
+        <p>Chief complaints, medical history, and treatment timeline</p>
+      </div>
+
+      <!-- Question 1 -->
+      <div class="form-section">
+        <h2>1. Chief Complaints</h2>
+        <p class="section-desc">What is your chief complaint? Please briefly list the ailment(s).</p>
+        <div class="form-group">
+          <textarea name="Chief Complaints" rows="6" required placeholder="Please list your complaints, one per line..."></textarea>
+        </div>
+      </div>
+
+      <!-- Question 2 -->
+      <div class="form-section">
+        <h2>2. Onset</h2>
+        <p class="section-desc">When did you first have this/these complaint(s), even in a very mild form?</p>
+        <div class="form-group">
+          <textarea name="Complaint Onset" rows="4" placeholder="Describe when each complaint first appeared..."></textarea>
+        </div>
+      </div>
+
+      <!-- Question 3 -->
+      <div class="form-section">
+        <h2>3. Diagnosis</h2>
+        <p class="section-desc">What, if any, diagnosis was made? What diagnostic tests were performed?</p>
+        <div class="form-group">
+          <textarea name="Diagnosis" rows="4" placeholder="List any diagnoses and tests..."></textarea>
+        </div>
+      </div>
+
+      <!-- Question 4 -->
+      <div class="form-section">
+        <h2>4. Health Professionals Consulted</h2>
+        <p class="section-desc">Did you consult a health professional? If so, what is their specialty?</p>
+        <div class="form-group">
+          <textarea name="Health Professionals" rows="4" placeholder="List any health professionals you've consulted and their specialties..."></textarea>
+        </div>
+      </div>
+
+      <!-- Question 5 -->
+      <div class="form-section">
+        <h2>5. Family Health History</h2>
+        <p class="section-desc">Please list any known history of disease in your family such as cancer, heart disease, diabetes, alcoholism, etc. What is your relationship? If deceased, what was your parents', grandparents', siblings' cause of death?</p>
+        <div class="form-group">
+          <textarea name="Family Health History" rows="6" placeholder="e.g. Mother - diabetes, heart disease. Father (deceased) - cancer. Maternal grandmother - arthritis..."></textarea>
+        </div>
+      </div>
+
+      <!-- Question 6 -->
+      <div class="form-section">
+        <h2>6. Treatments &amp; Medical Events Timeline</h2>
+        <p class="section-desc">Please list any treatments and/or noteworthy medical events. Specific dates are not important; approximate as best you can. List from present to past in chronological order.</p>
+        <p class="timeline-note">*Please include dental history such as any extractions, root canals, or wisdom teeth removal.</p>
+
+        <table class="timeline-table">
+          <thead>
+            <tr>
+              <th class="col-date">Date (approx.)</th>
+              <th>Medications / Treatments / Noteworthy Medical Events</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><input type="text" name="Timeline Date 1" placeholder="e.g. 2025"></td><td><input type="text" name="Timeline Event 1"></td></tr>
+            <tr><td><input type="text" name="Timeline Date 2"></td><td><input type="text" name="Timeline Event 2"></td></tr>
+            <tr><td><input type="text" name="Timeline Date 3"></td><td><input type="text" name="Timeline Event 3"></td></tr>
+            <tr><td><input type="text" name="Timeline Date 4"></td><td><input type="text" name="Timeline Event 4"></td></tr>
+            <tr><td><input type="text" name="Timeline Date 5"></td><td><input type="text" name="Timeline Event 5"></td></tr>
+            <tr><td><input type="text" name="Timeline Date 6"></td><td><input type="text" name="Timeline Event 6"></td></tr>
+            <tr><td><input type="text" name="Timeline Date 7"></td><td><input type="text" name="Timeline Event 7"></td></tr>
+            <tr><td><input type="text" name="Timeline Date 8"></td><td><input type="text" name="Timeline Event 8"></td></tr>
+            <tr><td><input type="text" name="Timeline Date 9"></td><td><input type="text" name="Timeline Event 9"></td></tr>
+            <tr><td><input type="text" name="Timeline Date 10"></td><td><input type="text" name="Timeline Event 10"></td></tr>
+            <tr><td><input type="text" name="Timeline Date 11"></td><td><input type="text" name="Timeline Event 11"></td></tr>
+            <tr><td><input type="text" name="Timeline Date 12"></td><td><input type="text" name="Timeline Event 12"></td></tr>
+            <tr><td><input type="text" name="Timeline Date 13"></td><td><input type="text" name="Timeline Event 13"></td></tr>
+            <tr><td><input type="text" name="Timeline Date 14"></td><td><input type="text" name="Timeline Event 14"></td></tr>
+            <tr><td><input type="text" name="Timeline Date 15"></td><td><input type="text" name="Timeline Event 15"></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- ═══════════════════════════════════════════════════ -->
+      <!-- PART 3: PRIVATE REQUEST FOR SERVICES & WAIVER      -->
+      <!-- ═══════════════════════════════════════════════════ -->
+      <div class="form-part-header">
+        <h2>Part 3: Private Request for Services &amp; Waiver</h2>
+        <p>Please read, acknowledge, and sign below</p>
+      </div>
+
+      <!-- Waiver Text -->
+      <div class="form-section">
+        <h2>Request for Services</h2>
+
+        <div class="waiver-text">
+          <p class="waiver-to">To: Jacinta Campbell, Homeopathic Consultant and Educator</p>
+
+          <p>Dear Mrs. Campbell:</p>
+
+          <p>
+            I understand that you are a qualified practical homeopath and are knowledgeably
+            employing and applying techniques and strategies according to the accepted standards
+            of homeopathic practice and pharmacy, and used by homeopathic practitioners worldwide,
+            aimed at the alleviation and elimination of acute and chronic disorders applying
+            homeopathic principles and restoring health.
+          </p>
+
+          <p>
+            And, that you may be willing to provide me with particular expert consultations,
+            specialized information and services relative to my own particular health condition,
+            and/or that of my child, pet, or livestock.
+          </p>
+
+          <p>
+            I hereby acknowledge and confirm that such information and services as may be provided
+            me as a result of this request are expressly agreed to be used for my personal and
+            private use and are not to be used for further distribution, and are to be kept strictly
+            confidential, and cannot be construed as medical, dental, chiropractic, veterinary
+            medical, or any other diagnosis, treatment or advice, or the practice of medicine,
+            chiropractic, dentistry, veterinary medicine or pharmacy, or the manufacturing,
+            marketing or retailing of drugs.
+          </p>
+
+          <p>
+            Please be advised, Mrs. Campbell, that I expressly confirm and acknowledge that I am
+            fully aware of the fact that you are not in any way professing or holding yourself out
+            to be a licensed medical doctor, physician, chiropractor, dentist, veterinarian,
+            pharmacist, or any other service or provider &ldquo;Qualified&rdquo; by
+            &ldquo;Licensure&rdquo; under any State or Federal Government law, and that you charge
+            only for the time, care, and expertise necessary for such private consultations.
+          </p>
+
+          <p>
+            Furthermore, take note that I am fully aware of, and do hereby willfully acknowledge
+            to agree to the fact that, any and all services and information you may choose to
+            provide me is in direct response to this personal private request only, and that in no
+            way can such an exchange of services or information between us be considered a
+            solicitation of services, funds, or any other offering of any sort or kind on your
+            part, and I alone am fully responsible for how I use the information obtained, and any
+            treatments or remedies I decided to take myself or administer to my children, animals,
+            livestock, or plants.
+          </p>
+
+          <p>
+            Additionally, I hereby agree to pay you fully the fees required for such services, and
+            expressly admit that I have not requested such services and information solely for the
+            purposes of &ldquo;inquiry&rdquo;, but in an honest and legitimate attempt to ascertain
+            the validity of your strategies to restore my or my family&rsquo;s, or my pet&rsquo;s,
+            livestock&rsquo;s or plant&rsquo;s health relative to one or more specific health
+            conditions, and in consideration of further partaking of the services made available
+            through yourself.
+          </p>
+
+          <p class="section-heading">2-Party Consent Compliance</p>
+
+          <p>
+            To ensure accuracy, consultations with Jacinta Campbell may be recorded. Second or
+            third-party recordings of all conversations without consent are prohibited. You will be
+            asked to give your consent before your first consultation. Audio files will be encrypted
+            and saved on a password-protected storage device. Violators of 2-party consent law may
+            face denial of service.
+          </p>
+        </div>
+      </div>
+
+      <!-- Waiver Acknowledgments -->
+      <div class="form-section">
+        <h2>Waiver Acknowledgments</h2>
+        <p class="section-desc">Please read and check each box to confirm your understanding.</p>
+
+        <div class="checkbox-group">
+          <label>
+            <input type="checkbox" name="Ack Qualified Homeopath" required>
+            I understand that Jacinta Campbell is a qualified practical homeopath employing accepted standards of homeopathic practice, and is not a licensed medical doctor, physician, chiropractor, dentist, veterinarian, or pharmacist.
+          </label>
+        </div>
+
+        <div class="checkbox-group">
+          <label>
+            <input type="checkbox" name="Ack Not Medical" required>
+            I understand that all information and services provided cannot be construed as medical, dental, chiropractic, or veterinary diagnosis, treatment, or advice.
+          </label>
+        </div>
+
+        <div class="checkbox-group">
+          <label>
+            <input type="checkbox" name="Ack Confidential Use" required>
+            I agree that all information and services provided are for my personal and private use only and will be kept strictly confidential.
+          </label>
+        </div>
+
+        <div class="checkbox-group">
+          <label>
+            <input type="checkbox" name="Ack Private Request" required>
+            I understand that all services are provided in direct response to my personal private request and do not constitute a solicitation of services on the part of the practitioner.
+          </label>
+        </div>
+
+        <div class="checkbox-group">
+          <label>
+            <input type="checkbox" name="Ack Full Responsibility" required>
+            I acknowledge that I alone am fully responsible for how I use the information obtained, and any treatments or remedies I decide to take or administer.
+          </label>
+        </div>
+
+        <div class="checkbox-group">
+          <label>
+            <input type="checkbox" name="Ack Fee Agreement" required>
+            I agree to pay fully the fees required for such services and confirm this is an honest and legitimate request.
+          </label>
+        </div>
+
+        <div class="checkbox-group">
+          <label>
+            <input type="checkbox" name="Ack Recording Consent" required>
+            I understand that consultations may be recorded for accuracy, that I will be asked for consent before recording, and that unauthorized recordings are prohibited.
+          </label>
+        </div>
+      </div>
+
+      <!-- Waiver Signature -->
+      <div class="form-section">
+        <h2>Signature</h2>
+        <p class="section-desc">
+          Sworn to under penalties of perjury under the laws of the United States of America (28 U.S.C. 1746).
+        </p>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Print Full Name <span class="required">*</span></label>
+            <input type="text" name="Waiver Full Name" required placeholder="Type your full legal name">
+          </div>
+          <div class="form-group">
+            <label>Date</label>
+            <input type="date" name="Waiver Date" id="waiver-date" readonly style="background:#f0f7f3;cursor:default;">
+          </div>
+        </div>
+        <script>document.getElementById('waiver-date').valueAsDate = new Date();</script>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Signature (type full name) <span class="required">*</span></label>
+            <input type="text" name="Waiver Signature" required placeholder="Type your full legal name as signature" style="font-family: 'Georgia', serif; font-style: italic; font-size: 1.1em;">
+          </div>
+        </div>
+
+        <p style="font-size: 0.85em; color: #888;">(Parent/Guardian if client is under 21)</p>
+
+        <div class="form-row" style="margin-top: 20px;">
+          <div class="form-group">
+            <label>Address</label>
+            <input type="text" name="Waiver Address" placeholder="Street address, city, state, zip">
+          </div>
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="tel" name="Waiver Phone">
+          </div>
+        </div>
+      </div>
+
       <!-- Submit -->
       <div class="text-center">
-        <button type="submit" class="form-submit">Submit Client Information</button>
+        <button type="submit" class="form-submit">Submit Complete Intake Package</button>
         <p class="form-note">
           You'll receive a confirmation email after submitting.
-          We'll be in touch within 24&ndash;48 hours to schedule your session.
+          A PDF copy of all forms will be downloaded to your device for your records.
         </p>
       </div>
 
